@@ -91,7 +91,7 @@ def main():
 
     print(results)
 
-    results.to_excel('Data/MK8_Tournaments_wins.xlsx', sheet_name='Scores', index=False)
+    results.to_excel('results/results.xlsx', sheet_name='Scores', index=False)
 
 if __name__ == "__main__":
     main()
