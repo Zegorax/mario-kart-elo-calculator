@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import os
 
 def prob(diff):
     return 1/(1 + (10**(-diff/400)))
@@ -91,7 +92,11 @@ def main():
 
     print(results)
 
-    results.to_excel('results/results.xlsx', sheet_name='Scores', index=False)
+    base_folder = "results/"
+    os.makedirs(base_folder, exist_ok=True)
+    results.to_excel(f"{base_folder}/results.xlsx", sheet_name='Scores', index=False)
+    results.to_csv(f"{base_folder}/results.csv")
+    results.to_json(f"{base_folder}/results.json")
 
 if __name__ == "__main__":
     main()

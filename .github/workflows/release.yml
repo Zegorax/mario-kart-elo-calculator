@@ -1,0 +1,21 @@
+name: Release
+on:
+    push:
+        branches: 'main'
+
+jobs:
+    compute:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - run: pip install -r requirements.txt
+            - run: python3 compute.py
+            - uses: "marvinpinto/action-automatic-releases@latest"
+              with:
+                repo_token: "${{ secrets.GITHUB_TOKEN }}"
+                automatic_release_tag: "latest"
+                prerelease: true
+                title: "MK8 Scores - $(date +%F)"
+                files: |
+                    results/*
+            
